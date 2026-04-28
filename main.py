@@ -1,14 +1,14 @@
-from sklearn.model_selection import train_test_split
-
 from src.data_loader import load_data
 from src.preprocess import clean_data
 from src.features import create_tfidf
 from src.train import train_svm, train_logistic
 from src.evaluate import evaluate, plot_confusion_matrix
 from src.error_analysis import show_misclassified_examples
+from src.explain import show_top_features_per_class
+from sklearn.model_selection import train_test_split
+from src.model_utils import save_model
 
-
-MODEL_NAME = "logistic"   # επιλογές: "svm" ή "logistic"
+MODEL_NAME = "svm"   # επιλογές: "svm" ή "logistic"
 
 
 df = load_data()
@@ -33,8 +33,13 @@ elif MODEL_NAME == "logistic":
 else:
     raise ValueError("MODEL_NAME must be either 'svm' or 'logistic'")
 
+save_model(model, vectorizer)
+print("Model and vectorizer saved successfully.")
+
 y_pred = model.predict(X_test_tfidf)
 
 evaluate(y_test, y_pred)
 plot_confusion_matrix(y_test, y_pred)
 show_misclassified_examples(X_test, y_test, y_pred, n=10)
+show_top_features_per_class(model, vectorizer, n=15)
+
