@@ -1,82 +1,132 @@
-# 🧠 Review Rating Prediction (NLP Project)
+# ⭐ Review Rating & Sentiment Prediction
 
-This project focuses on predicting product ratings (1–5 stars) based on review text using Machine Learning and NLP techniques.
+An end-to-end Natural Language Processing (NLP) project that predicts product ratings (1–5 stars) and sentiment (positive/negative) from user reviews.
 
----
-
-## 📊 Dataset
-
-- Amazon product reviews (~5k subset)
-- Features:
-  - `reviewText` (input)
-  - `overall` (target rating)
+Built with Python, Scikit-learn, and Streamlit, this project demonstrates a complete machine learning pipeline — from data preprocessing to model deployment with explainability.
 
 ---
 
-## ⚙️ Approach
+## 🚀 Features
 
-### 1. Preprocessing
-- Removed missing values
-- Selected relevant columns
-- Converted ratings to integers
-
-### 2. Feature Engineering
-- TF-IDF Vectorization
-- N-grams (unigrams + bigrams)
-- Max features: 5000
-
-### 3. Models
-- Logistic Regression (baseline)
-- Linear SVM (better performance)
+- 🔢 **Rating Prediction (1–5 stars)** using TF-IDF + Linear SVM  
+- 😊 **Sentiment Analysis (positive/negative)** using Logistic Regression  
+- 📊 **Model Evaluation** (accuracy, precision, recall, F1-score, confusion matrix)  
+- 💾 **Model Persistence** (save/load trained models)  
+- 🌐 **Interactive Web App** built with Streamlit  
+- 📈 **Confidence Score** for predictions  
+- 🔍 **Explainability**: shows which words influenced the prediction  
 
 ---
 
-## 📈 Results
+## 🧠 How It Works
 
-### 🔵 Linear SVM
-- Accuracy: ~0.78
-- Strong performance on extreme classes (1⭐, 5⭐)
+1. **Data Loading & Cleaning**
+   - Remove noise, normalize text  
+   - Prepare reviews for processing  
 
-### 🟢 Logistic Regression
-- Accuracy: ~0.71
-- More balanced but lower overall performance
+2. **Feature Engineering**
+   - Convert text to numerical features using **TF-IDF vectorization**  
 
----
+3. **Model Training**
+   - **Linear SVM** → Rating prediction (1–5)  
+   - **Logistic Regression** → Sentiment classification  
 
-## 🔍 Key Insights
+4. **Evaluation**
+   - Classification report  
+   - Confusion matrix  
+   - Error analysis (misclassified examples)  
 
-- Dataset is highly imbalanced (majority = 5⭐)
-- Model tends to favor dominant class
-- Confusion mainly occurs between adjacent ratings (e.g. 4⭐ vs 5⭐)
-- Mixed sentiment reviews are difficult to classify
-
----
-
-## 📊 Evaluation
-
-- Accuracy
-- Classification Report (Precision, Recall, F1-score)
-- Confusion Matrix
-- Error Analysis (manual inspection of misclassified reviews)
+5. **Deployment**
+   - Models are saved using `joblib`  
+   - Loaded into a **Streamlit app** for real-time predictions  
 
 ---
 
-## 🧱 Project Structure
-```commandline
-src/
-│── data_loader.py
-│── preprocess.py
-│── features.py
-│── train.py
-│── evaluate.py
-│── error_analysis.py
+## 🖥️ Demo
 
-main.py
-```
+### Rating Prediction
+Predict a 1–5 star rating based on review text.
+
+### Sentiment Prediction
+Classify reviews as positive or negative with confidence score.
+
+### Explainability
+See which words contributed most to the model's decision.
+
 ---
 
-## 🚀 How to Run
+## 📸 Screenshots
+
+> Add your Streamlit screenshots here (UI, predictions, explainability)
+
+---
+
+## ⚙️ Installation
 
 ```bash
+git clone https://github.com/your-username/review-rating-prediction.git
+cd review-rating-prediction
+python -m venv venv
+venv\Scripts\activate   # Windows
 pip install -r requirements.txt
-python main.py
+```
+
+## ▶️ Run the App
+
+```commandline
+streamlit run app.py
+```
+
+## 🏋️ Train Models
+
+```commandline
+python train_all.py
+```
+
+## 📁 Project Structure
+
+```commandline
+review-rating-prediction/
+│
+├── data/                  # Dataset
+├── models/                # Saved models
+├── src/
+│   ├── data_loader.py
+│   ├── preprocess.py
+│   ├── features.py
+│   ├── train.py
+│   ├── evaluate.py
+│   ├── explain.py
+│   ├── prediction_explain.py
+│   └── model_utils.py
+│
+├── app.py                 # Streamlit app
+├── train_all.py           # Train all models
+├── requirements.txt
+└── README.md
+```
+
+## 📊 Results
+
+- Rating Prediction Accuracy: ~0.78
+- Strong performance on class 5 (majority class)
+- Lower performance on minority classes (expected due to imbalance)
+- Sentiment Model
+- Balanced dataset
+- More stable and interpretable predictions
+
+## 🔮 Future Improvements
+
+🔥 Highlight important words directly in the UI
+
+⚖️ Improve class balance (SMOTE / class weights)
+
+🤖 Try advanced models (Random Forest, XGBoost)
+
+🧠 Experiment with deep learning (LSTM / Transformers)
+
+🌍 Deploy online (Streamlit Cloud / Hugging Face Spaces)
+
+## 🧑‍💻 Author
+
+Dimitris Loukakis 
