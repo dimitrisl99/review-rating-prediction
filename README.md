@@ -115,6 +115,21 @@ review-rating-prediction/
 - Balanced dataset
 - More stable and interpretable predictions
 
+## 📸 Screenshots
+
+### ⭐ Rating Prediction
+![result_3.png](screenshots/result_3.png)
+
+### 😊 Sentiment Prediction
+![result_1.png](screenshots/result_1.png)
+![result_2.png](screenshots/result_2.png)
+
+## 🧩 Key Challenges
+
+- Class imbalance (many 5-star reviews)
+- Fine-grained rating prediction (1–5)
+- Ambiguous middle ratings (3–4)
+
 ## 🔮 Future Improvements
 
 🔥 Highlight important words directly in the UI
